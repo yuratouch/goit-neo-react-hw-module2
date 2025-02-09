@@ -23,13 +23,6 @@ function App() {
     : 0;
 
   useEffect(() => {
-    const savedFeedback = localStorage.getItem("feedback");
-    if (savedFeedback) {
-      setFeedback(JSON.parse(savedFeedback));
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem("feedback", JSON.stringify(feedback));
   }, [feedback]);
 
@@ -41,9 +34,7 @@ function App() {
   }
 
   function resetFeedback() {
-    setFeedback(
-      Object.keys(feedback).reduce((acc, key) => ({ ...acc, [key]: 0 }), {})
-    );
+    setFeedback(feedbackOptions);
   }
 
   return (
